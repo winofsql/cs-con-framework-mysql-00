@@ -1,5 +1,6 @@
-# cs-console-mysql-01
-C# System.Data.Odbc コンソール
+# cs-console-mysql
+01 : C# System.Data.Odbc コンソール
+02 : 文字列の扱い
 
 MySQL Connector/ODBC
 
