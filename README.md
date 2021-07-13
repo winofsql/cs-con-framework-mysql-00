@@ -1,7 +1,7 @@
-# cs-console-mysql
-01 : C# System.Data.Odbc コンソール
+# C# System.Data.Odbc コンソール
+01 : MySQL 処理( select loop )
 
-02 : 文字列の扱い
+02 : MySQL 処理( select loop ) + 文字列の扱い
 
 MySQL Connector/ODBC
 
