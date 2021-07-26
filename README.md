@@ -9,7 +9,7 @@ https://dev.mysql.com/downloads/connector/odbc/
 
 System.Data.Odbc
 
-#OdbcConnection クラス
+# OdbcConnection クラス
 https://docs.microsoft.com/ja-jp/dotnet/api/system.data.odbc.odbcconnection?view=netframework-4.7.2
 
 
