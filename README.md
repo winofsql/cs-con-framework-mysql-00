@@ -9,6 +9,7 @@ https://dev.mysql.com/downloads/connector/odbc/
 
 System.Data.Odbc
 
-https://www.nuget.org/packages/System.Data.Odbc/
+#OdbcConnection クラス
+https://docs.microsoft.com/ja-jp/dotnet/api/system.data.odbc.odbcconnection?view=netframework-4.7.2
 
-PM> Install-Package System.Data.Odbc -Version 5.0.0
+
