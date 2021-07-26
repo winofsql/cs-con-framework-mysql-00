@@ -17,3 +17,6 @@ https://docs.microsoft.com/ja-jp/dotnet/api/system.data.odbc.odbccommand?view=ne
 
 # OdbcDataReader クラス
 https://docs.microsoft.com/ja-jp/dotnet/api/system.data.odbc.odbcdatareader?view=netframework-4.7.2
+
+# OdbcConnectionStringBuilder クラス
+https://docs.microsoft.com/ja-jp/dotnet/api/system.data.odbc.odbcconnectionstringbuilder?view=netframework-4.7.2
