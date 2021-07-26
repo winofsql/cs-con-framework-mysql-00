@@ -2,7 +2,7 @@ using System;
 using System.Data.Odbc;
 using System.Diagnostics;
 
-namespace cs_console_mysql_02
+namespace cs_con_framework_mysql_00
 {
     class Program
     {
