@@ -2,7 +2,7 @@ using System;
 using System.Data.Odbc;
 using System.Diagnostics;
 
-namespace cs_console_mysql_01
+namespace cs_con_framework_mysql_00
 {
     class Program
     {
@@ -11,29 +11,38 @@ namespace cs_console_mysql_01
 
             OdbcConnection myCon = CreateConnection();
 
-            // MySQL ‚Ìˆ—
+            // MySQL ã®å‡¦ç†
 
             // SQL
-            string myQuery = "SELECT Ğˆõƒ}ƒXƒ^.*,DATE_FORMAT(¶”NŒ“ú,'%Y-%m-%d') as ’a¶“ú from Ğˆõƒ}ƒXƒ^";
+            string myQuery =
+                @"SELECT
+                    ç¤¾å“¡ãƒã‚¹ã‚¿.*,
+                    DATE_FORMAT(ç”Ÿå¹´æœˆæ—¥,'%Y-%m-%d') as èª•ç”Ÿæ—¥
+                    from ç¤¾å“¡ãƒã‚¹ã‚¿";
 
-            // SQLÀs—p‚ÌƒIƒuƒWƒFƒNƒg‚ğì¬
+            // SQLå®Ÿè¡Œç”¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆ
             OdbcCommand myCommand = new OdbcCommand();
 
-            // Às—pƒIƒuƒWƒFƒNƒg‚É•K—v‚Èî•ñ‚ğ—^‚¦‚é
+            // å®Ÿè¡Œç”¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¿…è¦ãªæƒ…å ±ã‚’ä¸ãˆã‚‹
             myCommand.CommandText = myQuery;    // SQL
-            myCommand.Connection = myCon;       // Ú‘±
+            myCommand.Connection = myCon;       // æ¥ç¶š
 
-            // Ÿ‚Å‚·‚éAƒf[ƒ^ƒx[ƒX‚Ì’l‚ğ‚à‚ç‚¤ˆ×‚ÌƒIƒuƒWƒFƒNƒg‚Ì•Ï”‚Ì’è‹`
+            // æ¬¡ã§ã™ã‚‹ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®å€¤ã‚’ã‚‚ã‚‰ã†ç‚ºã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å¤‰æ•°ã®å®šç¾©
             OdbcDataReader myReader;
 
-            // SELECT ‚ğÀs‚µ‚½Œ‹‰Ê‚ğæ“¾
+            // SELECT ã‚’å®Ÿè¡Œã—ãŸçµæœã‚’å–å¾—
             myReader = myCommand.ExecuteReader();
 
-            // myReader ‚©‚çƒf[ƒ^‚ª“Ç‚İ‚¾‚³‚ê‚éŠÔ‚¸‚Á‚Æƒ‹[ƒv
+            // myReader ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ãŒèª­ã¿ã ã•ã‚Œã‚‹é–“ãšã£ã¨ãƒ«ãƒ¼ãƒ—
             while (myReader.Read())
             {
-                string text = $"{myReader.GetValue(myReader.GetOrdinal("–¼")).ToString()}";
+                // åˆ—åã‚ˆã‚Šåˆ—ç•ªå·ã‚’å–å¾—
+                int index = myReader.GetOrdinal("æ°å");
+                // åˆ—ç•ªå·ã§ã€å€¤ã‚’å–å¾—ã—ã¦æ–‡å­—åˆ—åŒ–
+                string text = myReader.GetValue(index).ToString();
+                // å®Ÿéš›ã®ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å‡ºåŠ›
                 Console.WriteLine(text);
+                // å‡ºåŠ›ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã«å‡ºåŠ›
                 Debug.WriteLine($"Debug:{text}");
             }
 
@@ -44,28 +53,26 @@ namespace cs_console_mysql_01
 
         static OdbcConnection CreateConnection()
         {
-            // Ú‘±•¶š—ñ‚Ìì¬
+            // æ¥ç¶šæ–‡å­—åˆ—ã®ä½œæˆ
             OdbcConnectionStringBuilder builder = new OdbcConnectionStringBuilder();
             builder.Driver = "MySQL ODBC 8.0 Unicode Driver";
-            // Ú‘±—p‚Ìƒpƒ‰ƒ[ƒ^‚ğ’Ç‰Á
+            // æ¥ç¶šç”¨ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¿½åŠ 
             builder.Add("server", "localhost");
             builder.Add("database", "lightbox");
             builder.Add("uid", "root");
             builder.Add("pwd", "");
 
-            string work = builder.ConnectionString;
-
             Console.WriteLine(builder.ConnectionString);
+            Debug.WriteLine($"Debug:{builder.ConnectionString}");
 
-            // Ú‘±‚Ìì¬
+            // æ¥ç¶šã®ä½œæˆ
             OdbcConnection myCon = new OdbcConnection();
 
-            // MySQL ‚ÌÚ‘±€”õŠ®—¹
+            // MySQL ã®æ¥ç¶šæº–å‚™å®Œäº†
             myCon.ConnectionString = builder.ConnectionString;
 
-            // MySQL ‚ÉÚ‘±
+            // MySQL ã«æ¥ç¶š
             myCon.Open();
-
 
             return myCon;
         }
